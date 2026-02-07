@@ -28,20 +28,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Build APK (gradle)
-        run: ./gradlew assembleRelease --no-daemon
+      - name: Build FDroid Release APK
+        run: ./gradlew assembleFdroidRelease --no-daemon
 
-      - name: Upload Release APK
+      - name: Upload FDroid Release APK
         uses: actions/upload-artifact@v4
         with:
-          name: Amethyst-XMR-Release-APK
-          path: amethyst/build/outputs/apk/*/release/*.apk
+          name: Amethyst-XMR-FDroid-Release-APK
+          path: amethyst/build/outputs/apk/fdroid/release/*.apk
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug --no-daemon
+      - name: Build FDroid Debug APK
+        run: ./gradlew assembleFdroidDebug --no-daemon
 
-      - name: Upload Debug APK
+      - name: Upload FDroid Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: Amethyst-XMR-Debug-APK
-          path: amethyst/build/outputs/apk/*/debug/*.apk
+          name: Amethyst-XMR-FDroid-Debug-APK
+          path: amethyst/build/outputs/apk/fdroid/debug/*.apk
