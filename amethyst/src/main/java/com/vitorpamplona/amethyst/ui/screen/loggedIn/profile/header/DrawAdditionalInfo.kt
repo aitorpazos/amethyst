@@ -183,6 +183,11 @@ fun DrawAdditionalInfo(
         }
     DisplayLNAddress(lud16, baseUser, accountViewModel, nav)
 
+    // XMR address display
+    val xmrAddress = remember(userState) { userState?.info?.xmr?.trim() }
+    val xmrOpenAlias = remember(userState) { userState?.info?.xmrOpenAlias?.trim() }
+    DisplayXMRAddress(xmrAddress, xmrOpenAlias, baseUser, accountViewModel, nav)
+
     if (user.identities.isNotEmpty()) {
         user.identities.forEach { identity: IdentityClaimTag ->
             Row(verticalAlignment = Alignment.CenterVertically) {

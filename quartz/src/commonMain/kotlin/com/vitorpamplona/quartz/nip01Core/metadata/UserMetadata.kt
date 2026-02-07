@@ -42,16 +42,23 @@ class UserMetadata {
     var lud06: String? = null
     var lud16: String? = null
 
+    // Monero (XMR) tipping support
+    var xmr: String? = null              // Direct XMR address (4... or 8...)
+    @SerialName("xmr_openalias")
+    var xmrOpenAlias: String? = null     // OpenAlias format: user@domain.com
+
     var twitter: String? = null
 
     fun anyName(): String? = displayName ?: name
 
     fun anyNameStartsWith(prefix: String): Boolean =
-        listOfNotNull(name, displayName, nip05, lud06, lud16).any {
+        listOfNotNull(name, displayName, nip05, lud06, lud16, xmr, xmrOpenAlias).any {
             it.contains(prefix, true)
         }
 
     fun lnAddress(): String? = lud16 ?: lud06
+
+    fun xmrAddress(): String? = xmr ?: xmrOpenAlias
 
     fun bestName(): String? = displayName ?: name
 
@@ -84,6 +91,8 @@ class UserMetadata {
         if (name?.isNotEmpty() == true) name = name?.trim()
         if (lud06?.isNotEmpty() == true) lud06 = lud06?.trim()
         if (lud16?.isNotEmpty() == true) lud16 = lud16?.trim()
+        if (xmr?.isNotEmpty() == true) xmr = xmr?.trim()
+        if (xmrOpenAlias?.isNotEmpty() == true) xmrOpenAlias = xmrOpenAlias?.trim()
         if (pronouns?.isNotEmpty() == true) pronouns = pronouns?.trim()
 
         if (banner?.isNotEmpty() == true) banner = banner?.trim()
@@ -96,6 +105,8 @@ class UserMetadata {
         if (name?.isBlank() == true) name = null
         if (lud06?.isBlank() == true) lud06 = null
         if (lud16?.isBlank() == true) lud16 = null
+        if (xmr?.isBlank() == true) xmr = null
+        if (xmrOpenAlias?.isBlank() == true) xmrOpenAlias = null
 
         if (banner?.isBlank() == true) banner = null
         if (website?.isBlank() == true) website = null
