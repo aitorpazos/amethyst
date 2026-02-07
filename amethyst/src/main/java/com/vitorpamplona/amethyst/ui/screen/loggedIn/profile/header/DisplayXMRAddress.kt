@@ -55,6 +55,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.vitorpamplona.amethyst.Amethyst
 import com.vitorpamplona.amethyst.R
 import com.vitorpamplona.amethyst.model.User
 import com.vitorpamplona.amethyst.service.openalias.OpenAliasResolver
@@ -96,7 +97,7 @@ fun DisplayXMRAddress(
             scope.launch {
                 val resolver = OpenAliasResolver()
                 val result = resolver.resolveXmr(xmrOpenAlias) { url ->
-                    accountViewModel.httpClient.getHttpClient()
+                    Amethyst.instance.okHttpClients.defaultHttpClientWithoutProxy.value
                 }
                 resolvedAddress = result?.recipientAddress
                 recipientName = result?.recipientName
@@ -164,7 +165,7 @@ fun DisplayXMRAddress(
         if (tipExpanded && displayAddress != null) {
             XmrTipCard(
                 address = displayAddress,
-                recipientName = recipientName ?: user.bestDisplayName(),
+                recipientName = recipientName ?: user.info.bestName(),
                 tipAmount = tipAmount,
                 onTipAmountChange = { tipAmount = it },
                 onSendTip = {
@@ -172,7 +173,7 @@ fun DisplayXMRAddress(
                     XmrPaymentIntent.openWallet(
                         address = displayAddress,
                         amount = amount,
-                        recipientName = recipientName ?: user.bestDisplayName(),
+                        recipientName = recipientName ?: user.info.bestName(),
                         context = context,
                         onSuccess = { tipExpanded = false },
                         onError = { error -> showErrorDialog = error }
