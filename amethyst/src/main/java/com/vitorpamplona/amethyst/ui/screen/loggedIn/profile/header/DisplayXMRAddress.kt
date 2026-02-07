@@ -165,7 +165,7 @@ fun DisplayXMRAddress(
         if (tipExpanded && displayAddress != null) {
             XmrTipCard(
                 address = displayAddress,
-                recipientName = recipientName ?: user.info.bestName(),
+                recipientName = recipientName ?: user.toBestDisplayName(),
                 tipAmount = tipAmount,
                 onTipAmountChange = { tipAmount = it },
                 onSendTip = {
@@ -173,7 +173,7 @@ fun DisplayXMRAddress(
                     XmrPaymentIntent.openWallet(
                         address = displayAddress,
                         amount = amount,
-                        recipientName = recipientName ?: user.info.bestName(),
+                        recipientName = recipientName ?: user.toBestDisplayName(),
                         context = context,
                         onSuccess = { tipExpanded = false },
                         onError = { error -> showErrorDialog = error }
