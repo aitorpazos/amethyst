@@ -162,6 +162,8 @@
     <string name="pronouns">Pronouns</string>
     <string name="ln_address">LN Address</string>
     <string name="ln_url_outdated">LN URL (outdated)</string>
+    <string name="xmr_address">XMR Address</string>
+    <string name="xmr_openalias">XMR OpenAlias</string>
     <string name="save_to_gallery">Save to Gallery</string>
     <string name="image_saved_to_the_gallery">Image saved to the phone\'s photo gallery</string>
     <string name="video_download_has_started_toast">Video download has started…</string>

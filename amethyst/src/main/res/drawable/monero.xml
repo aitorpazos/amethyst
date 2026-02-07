@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Monero (XMR) logo - simplified M shape
+  Color: #FF6600 (Monero Orange)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Outer circle -->
+    <path
+        android:fillColor="#FF6600"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2z"/>
+    
+    <!-- Inner background (slightly smaller circle) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,4C7.58,4 4,7.58 4,12s3.58,8 8,8 8,-3.58 8,-8S16.42,4 12,4z"/>
+    
+    <!-- M shape -->
+    <path
+        android:fillColor="#FF6600"
+        android:pathData="M6,16 L6,10 L9,13 L12,10 L15,13 L18,10 L18,16 L16,16 L16,13 L15,14 L12,11 L9,14 L8,13 L8,16 Z"/>
+    
+    <!-- Bottom bar -->
+    <path
+        android:fillColor="#FF6600"
+        android:pathData="M5,17 L19,17 L19,19 L5,19 Z"/>
+</vector>

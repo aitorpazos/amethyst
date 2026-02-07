@@ -284,6 +284,38 @@ fun NewUserMetadataScreen(
                 Spacer(modifier = Modifier.height(10.dp))
 
                 OutlinedTextField(
+                    label = { Text(text = stringRes(R.string.xmr_address)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    value = postViewModel.xmrAddress.value,
+                    onValueChange = { postViewModel.xmrAddress.value = it },
+                    placeholder = {
+                        Text(
+                            text = "4... or 8...",
+                            color = MaterialTheme.colorScheme.placeholderText,
+                        )
+                    },
+                    singleLine = true,
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                OutlinedTextField(
+                    label = { Text(text = stringRes(R.string.xmr_openalias)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    value = postViewModel.xmrOpenAlias.value,
+                    onValueChange = { postViewModel.xmrOpenAlias.value = it },
+                    placeholder = {
+                        Text(
+                            text = "user@domain.com",
+                            color = MaterialTheme.colorScheme.placeholderText,
+                        )
+                    },
+                    singleLine = true,
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                OutlinedTextField(
                     label = { Text(text = stringRes(R.string.twitter)) },
                     modifier = Modifier.fillMaxWidth(),
                     value = postViewModel.twitter.value,

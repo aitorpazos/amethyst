@@ -59,6 +59,9 @@ class NewUserMetadataViewModel : ViewModel() {
     val lnAddress = mutableStateOf("")
     val lnURL = mutableStateOf("")
 
+    val xmrAddress = mutableStateOf("")
+    val xmrOpenAlias = mutableStateOf("")
+
     val twitter = mutableStateOf("")
     val github = mutableStateOf("")
     val mastodon = mutableStateOf("")
@@ -83,6 +86,9 @@ class NewUserMetadataViewModel : ViewModel() {
             nip05.value = it.info.nip05 ?: ""
             lnAddress.value = it.info.lud16 ?: ""
             lnURL.value = it.info.lud06 ?: ""
+
+            xmrAddress.value = it.info.xmr ?: ""
+            xmrOpenAlias.value = it.info.xmrOpenAlias ?: ""
 
             twitter.value = ""
             github.value = ""
@@ -112,6 +118,8 @@ class NewUserMetadataViewModel : ViewModel() {
                 nip05 = nip05.value,
                 lnAddress = lnAddress.value,
                 lnURL = lnURL.value,
+                xmrAddress = xmrAddress.value,
+                xmrOpenAlias = xmrOpenAlias.value,
                 twitter = twitter.value,
                 mastodon = mastodon.value,
                 github = github.value,
@@ -132,6 +140,8 @@ class NewUserMetadataViewModel : ViewModel() {
         nip05.value = ""
         lnAddress.value = ""
         lnURL.value = ""
+        xmrAddress.value = ""
+        xmrOpenAlias.value = ""
         twitter.value = ""
         github.value = ""
         mastodon.value = ""

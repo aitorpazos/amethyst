@@ -36,6 +36,8 @@ import com.vitorpamplona.quartz.nip01Core.metadata.tags.Nip05Tag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.PictureTag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.PronounsTag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.WebsiteTag
+import com.vitorpamplona.quartz.nip01Core.metadata.tags.XmrTag
+import com.vitorpamplona.quartz.nip01Core.metadata.tags.XmrOpenAliasTag
 import com.vitorpamplona.quartz.nip01Core.signers.EventTemplate
 import com.vitorpamplona.quartz.nip01Core.signers.eventTemplate
 import com.vitorpamplona.quartz.nip01Core.tags.aTag.ATag
@@ -124,6 +126,8 @@ class MetadataEvent(
             lnAddress: String? = null,
             lnURL: String? = null,
             pronouns: String? = null,
+            xmrAddress: String? = null,
+            xmrOpenAlias: String? = null,
             twitter: String? = null,
             mastodon: String? = null,
             github: String? = null,
@@ -145,6 +149,8 @@ class MetadataEvent(
                 lnAddress,
                 lnURL,
                 pronouns,
+                xmrAddress,
+                xmrOpenAlias,
             )
 
             val newJsonObject = JsonObject(currentMetadata)
@@ -179,6 +185,8 @@ class MetadataEvent(
             lnAddress: String? = null,
             lnURL: String? = null,
             pronouns: String? = null,
+            xmrAddress: String? = null,
+            xmrOpenAlias: String? = null,
             twitter: String? = null,
             mastodon: String? = null,
             github: String? = null,
@@ -200,6 +208,8 @@ class MetadataEvent(
                 lnAddress,
                 lnURL,
                 pronouns,
+                xmrAddress,
+                xmrOpenAlias,
             )
 
             val newJsonObject = JsonObject(currentMetadata)
@@ -233,6 +243,8 @@ class MetadataEvent(
             lnAddress: String? = null,
             lnURL: String? = null,
             pronouns: String? = null,
+            xmrAddress: String? = null,
+            xmrOpenAlias: String? = null,
         ) {
             name?.let { addIfNotBlank(currentMetadata, NameTag.TAG_NAME, it) }
             displayName?.let { addIfNotBlank(currentMetadata, DisplayNameTag.TAG_NAME, it) }
@@ -244,6 +256,8 @@ class MetadataEvent(
             nip05?.let { addIfNotBlank(currentMetadata, Nip05Tag.TAG_NAME, it) }
             lnAddress?.let { addIfNotBlank(currentMetadata, Lud16Tag.TAG_NAME, it) }
             lnURL?.let { addIfNotBlank(currentMetadata, Lud06Tag.TAG_NAME, it) }
+            xmrAddress?.let { addIfNotBlank(currentMetadata, XmrTag.TAG_NAME, it) }
+            xmrOpenAlias?.let { addIfNotBlank(currentMetadata, XmrOpenAliasTag.TAG_NAME, it) }
         }
 
         // For https://github.com/nostr-protocol/nips/pull/1770
@@ -258,6 +272,8 @@ class MetadataEvent(
             currentMetadata[Nip05Tag.TAG_NAME]?.let { nip05(it.text) } ?: run { remove(Nip05Tag.TAG_NAME) }
             currentMetadata[Lud16Tag.TAG_NAME]?.let { lud16(it.text) } ?: run { remove(Lud16Tag.TAG_NAME) }
             currentMetadata[Lud06Tag.TAG_NAME]?.let { lud06(it.text) } ?: run { remove(Lud06Tag.TAG_NAME) }
+            currentMetadata[XmrTag.TAG_NAME]?.let { xmr(it.text) } ?: run { remove(XmrTag.TAG_NAME) }
+            currentMetadata[XmrOpenAliasTag.TAG_NAME]?.let { xmrOpenAlias(it.text) } ?: run { remove(XmrOpenAliasTag.TAG_NAME) }
         }
 
         private fun addIfNotBlank(

@@ -31,6 +31,8 @@ import com.vitorpamplona.quartz.nip01Core.metadata.tags.Nip05Tag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.PictureTag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.PronounsTag
 import com.vitorpamplona.quartz.nip01Core.metadata.tags.WebsiteTag
+import com.vitorpamplona.quartz.nip01Core.metadata.tags.XmrTag
+import com.vitorpamplona.quartz.nip01Core.metadata.tags.XmrOpenAliasTag
 
 fun TagArrayBuilder<MetadataEvent>.name(name: String) = addUnique(NameTag.assemble(name))
 
@@ -51,3 +53,7 @@ fun TagArrayBuilder<MetadataEvent>.lud06(lud06: String) = addUnique(Lud06Tag.ass
 fun TagArrayBuilder<MetadataEvent>.banner(banner: String) = addUnique(BannerTag.assemble(banner))
 
 fun TagArrayBuilder<MetadataEvent>.pronouns(pronouns: String) = addUnique(PronounsTag.assemble(pronouns))
+
+fun TagArrayBuilder<MetadataEvent>.xmr(xmr: String) = addUnique(XmrTag.assemble(xmr))
+
+fun TagArrayBuilder<MetadataEvent>.xmrOpenAlias(xmrOpenAlias: String) = addUnique(XmrOpenAliasTag.assemble(xmrOpenAlias))

@@ -282,12 +282,10 @@ fun MoneroIcon(
     modifier: Modifier = Modifier,
     tint: Color = MoneroOrange
 ) {
-    // Simple Monero "M" icon using text
-    // TODO: Replace with proper Monero logo SVG/vector drawable
-    Text(
-        text = "ⓜ",
-        color = tint,
-        style = MaterialTheme.typography.bodyMedium,
+    Icon(
+        painter = androidx.compose.ui.res.painterResource(id = com.vitorpamplona.amethyst.R.drawable.monero),
+        contentDescription = "Monero",
+        tint = Color.Unspecified, // Use original colors from vector
         modifier = modifier
     )
 }
